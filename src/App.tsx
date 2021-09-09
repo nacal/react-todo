@@ -5,6 +5,7 @@ interface Todo {
   value: string;
   id: number;
   checked: boolean;
+  removed: boolean;
 }
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
       value: text,
       id: new Date().getTime(),
       checked: false,
+      removed: false,
     };
 
     setTodos([newTodo, ...todos]);
@@ -48,6 +50,17 @@ const App = () => {
     setTodos(newTodos);
   };
 
+  const handleOnRemove = (id: number, removed: boolean) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.removed = !removed;
+      }
+      return todo;
+    });
+
+    setTodos(newTodos);
+  };
+
   return (
     <>
       <form onSubmit={(e) => handleOnSubmit(e)}>
@@ -66,6 +79,7 @@ const App = () => {
         todos={todos}
         handleOnEdit={handleOnEdit}
         handleOnCheck={handleOnCheck}
+        handleOnRemove={handleOnRemove}
       />
     </>
   )
