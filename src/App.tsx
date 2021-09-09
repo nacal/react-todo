@@ -21,8 +21,8 @@ const App = () => {
 
   return (
     <>
-      <Form todos={todos} setTodos={setTodos} />
       <Select setFilter={setFilter} />
+      <Form filter={filter} todos={todos} setTodos={setTodos} />
       <List
         filter={filter}
         todos={todos}
