@@ -1,8 +1,8 @@
-import { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { Filter } from './App';
 
 interface SelectProps {
-  setFilter: Dispatch<SetStateAction<Filter>>;
+  setFilter: React.Dispatch<React.SetStateAction<Filter>>;
 }
 
 const Select = (props: SelectProps) => {
