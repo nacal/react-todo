@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import List from './List';
 
 interface Todo {
   value: string;
+  id: number;
 }
 
 const Form = () => {
@@ -17,6 +19,7 @@ const Form = () => {
 
     const newTodo: Todo = {
       value: text,
+      id: new Date().getTime(),
     };
 
     setTodos([newTodo, ...todos]);
@@ -24,18 +27,21 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={(e) => handleOnSubmit(e)}>
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <input
-        type="submit"
-        value='追加'
-        onChange={(e) => handleOnSubmit(e)}
-      />
-    </form>
+    <>
+      <form onSubmit={(e) => handleOnSubmit(e)}>
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <input
+          type="submit"
+          value='追加'
+          onChange={(e) => handleOnSubmit(e)}
+        />
+      </form>
+      <List todos={todos} />
+    </>
   )
 }
 
