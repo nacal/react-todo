@@ -11,6 +11,8 @@ interface Todo {
 
 type Filter = 'all' | 'checked' | 'unchecked' | 'removed';
 
+export type { Filter, Todo };
+
 const App = () => {
   const [text, setText] = useState<string>('');
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -107,4 +109,3 @@ const App = () => {
 }
 
 export default App;
-export type { Filter, Todo };
