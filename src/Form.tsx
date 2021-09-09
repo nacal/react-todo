@@ -26,11 +26,19 @@ const Form = (props: FormProps) => {
     setText('');
   };
 
+  const handleOnEmpty = () => {
+    const newTodos = props.todos.filter((todo) => !todo.removed);
+    props.setTodos(newTodos);
+  }
+
   return (
     <>
       { props.filter === 'removed' ?
         (
-          <button onClick={() => console.log('remove all')}>
+          <button
+            onClick={() => handleOnEmpty()}
+            disabled={props.todos.filter((todo) => todo.removed).length === 0}
+          >
             ゴミ箱を空にする
           </button>
         ) : (
