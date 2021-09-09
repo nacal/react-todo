@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import List from './List';
+import Select from './Select';
 
 interface Todo {
   value: string;
@@ -8,9 +9,12 @@ interface Todo {
   removed: boolean;
 }
 
+type Filter = 'all' | 'checked' | 'unchecked' | 'removed';
+
 const App = () => {
   const [text, setText] = useState<string>('');
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [filter, setFilter] = useState<Filter>('all');
 
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement | HTMLInputElement>) => {
     e.preventDefault();
@@ -61,6 +65,21 @@ const App = () => {
     setTodos(newTodos);
   };
 
+  const filteredTodos = todos.filter((todo) => {
+    switch (filter) {
+      case 'all':
+        return !todo.removed;
+      case 'checked':
+        return todo.checked && !todo.removed;
+      case 'unchecked':
+        return !todo.checked && !todo.removed;
+      case 'removed':
+        return todo.removed;
+      default:
+        return todo;
+    }
+  });
+
   return (
     <>
       <form onSubmit={(e) => handleOnSubmit(e)}>
@@ -75,11 +94,13 @@ const App = () => {
           onChange={(e) => handleOnSubmit(e)}
         />
       </form>
+      <Select setFilter={setFilter} />
       <List
-        todos={todos}
+        filteredTodos={filteredTodos}
         handleOnEdit={handleOnEdit}
         handleOnCheck={handleOnCheck}
         handleOnRemove={handleOnRemove}
+        filter={filter}
       />
     </>
   )
