@@ -1,11 +1,5 @@
 import React from 'react';
-
-interface Todo {
-  value: string;
-  id: number;
-  checked: boolean;
-  removed: boolean;
-}
+import { Todo } from './App';
 
 type Filter = 'all' | 'checked' | 'unchecked' | 'removed';
 

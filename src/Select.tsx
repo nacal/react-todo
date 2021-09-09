@@ -1,10 +1,9 @@
 import React, { Dispatch, SetStateAction } from 'react';
+import { Filter } from './App';
 
 interface SelectProps {
   setFilter: Dispatch<SetStateAction<Filter>>;
 }
-
-type Filter = 'all' | 'checked' | 'unchecked' | 'removed';
 
 const Select = (props: SelectProps) => {
   return (
