@@ -4,6 +4,7 @@ import List from './List';
 interface Todo {
   value: string;
   id: number;
+  checked: boolean;
 }
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
     const newTodo: Todo = {
       value: text,
       id: new Date().getTime(),
+      checked: false,
     };
 
     setTodos([newTodo, ...todos]);
@@ -28,6 +30,17 @@ const App = () => {
     const newTodos = todos.map((todo) => {
       if (todo.id === id) {
         todo.value = value;
+      }
+      return todo;
+    });
+
+    setTodos(newTodos);
+  };
+
+  const handleOnCheck = (id: number, checked: boolean) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.checked = !checked;
       }
       return todo;
     });
@@ -49,7 +62,11 @@ const App = () => {
           onChange={(e) => handleOnSubmit(e)}
         />
       </form>
-      <List todos={todos} handleOnEdit={handleOnEdit} />
+      <List
+        todos={todos}
+        handleOnEdit={handleOnEdit}
+        handleOnCheck={handleOnCheck}
+      />
     </>
   )
 }
