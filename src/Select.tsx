@@ -3,6 +3,7 @@ import { Filter } from './App';
 
 interface SelectProps {
   setFilter: React.Dispatch<React.SetStateAction<Filter>>;
+  className?: string;
 }
 
 const Select = (props: SelectProps) => {
@@ -10,7 +11,7 @@ const Select = (props: SelectProps) => {
     <select
       defaultValue="all"
       onChange={(e) => props.setFilter(e.target.value as Filter)}
-      className="p-1 mx-auto block"
+      className={`p-1 mx-auto block ${props.className !== undefined ? props.className : ''}`}
     >
       <option value="all">すべてのタスク</option>
       <option value="checked">完了したタスク</option>

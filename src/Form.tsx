@@ -5,6 +5,7 @@ interface FormProps {
   filter: Filter;
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  className?: string;
 }
 
 const Form = (props: FormProps) => {
@@ -34,7 +35,7 @@ const Form = (props: FormProps) => {
   const disable: boolean = (props.filter === 'checked' || props.filter === 'removed');
 
   return (
-    <>
+    <div className={props.className !== undefined ? props.className : ''}>
       {(() => {
         if (props.filter === 'removed') {
           return (
@@ -98,7 +99,7 @@ const Form = (props: FormProps) => {
           </button>
         </div>
       </form >
-    </>
+    </div>
   )
 }
 

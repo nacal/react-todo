@@ -5,6 +5,7 @@ interface ListProps {
   filter: Filter;
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  className?: string;
 }
 
 const List = (props: ListProps) => {
@@ -59,7 +60,7 @@ const List = (props: ListProps) => {
   });
 
   return (
-    <ul>
+    <ul className={props.className !== undefined ? props.className : ''}>
       {filteredTodos.map((todo) => {
         return (
           <li key={todo.id}>
