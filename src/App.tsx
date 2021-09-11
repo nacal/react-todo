@@ -29,7 +29,7 @@ const App = () => {
       />
       <Select
         setFilter={setFilter}
-        className="mb-4"
+        className="mb-8"
       />
       <List
         filter={filter}
