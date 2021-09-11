@@ -9,7 +9,9 @@ const Select = (props: SelectProps) => {
   return (
     <select
       defaultValue="all"
-      onChange={(e) => props.setFilter(e.target.value as Filter)}>
+      onChange={(e) => props.setFilter(e.target.value as Filter)}
+      className="p-1 mx-auto block"
+    >
       <option value="all">すべてのタスク</option>
       <option value="checked">完了したタスク</option>
       <option value="unchecked">未完了のタスク</option>
