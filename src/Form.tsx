@@ -55,7 +55,7 @@ const Form = (props: FormProps) => {
             type="submit"
             disabled={disable}
             onChange={(e: any) => handleOnSubmit(e)}
-            className="flex items-center justify-center w-12 h-12 bg-gray-900 text-gray-100 rounded-full disabled:opacity-50"
+            className="flex items-center justify-center w-12 h-12 bg-gray-700 text-gray-100 rounded-full disabled:opacity-50"
           >
             <svg
               className="w-4 h-4"

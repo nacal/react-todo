@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <main className="min-h-screen bg-gray-400">
+    <main className="min-h-screen bg-gray-300">
       <App />
     </main>
   </React.StrictMode>,
