@@ -11,7 +11,9 @@ interface FormProps {
 const Form = (props: FormProps) => {
   const [text, setText] = useState<string>('');
 
-  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement | HTMLInputElement>) => {
+  const handleOnSubmit = (
+    e: React.FormEvent<HTMLFormElement | HTMLInputElement>
+  ) => {
     e.preventDefault();
 
     if (!text) return;
@@ -30,9 +32,10 @@ const Form = (props: FormProps) => {
   const handleOnEmpty = () => {
     const newTodos = props.todos.filter((todo) => !todo.removed);
     props.setTodos(newTodos);
-  }
+  };
 
-  const disable: boolean = (props.filter === 'checked' || props.filter === 'removed');
+  const disable: boolean =
+    props.filter === 'checked' || props.filter === 'removed';
 
   return (
     <div className={props.className !== undefined ? props.className : ''}>
@@ -62,7 +65,8 @@ const Form = (props: FormProps) => {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -73,7 +77,7 @@ const Form = (props: FormProps) => {
             </svg>
           </button>
         </div>
-      </form >
+      </form>
       {(() => {
         if (props.filter === 'removed') {
           return (
@@ -86,7 +90,8 @@ const Form = (props: FormProps) => {
                 className="w-6 h-6"
                 fill-rule="evenodd"
                 clip-rule="evenodd"
-                xmlns="http://www.w3.org/2000/svg">
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -97,11 +102,11 @@ const Form = (props: FormProps) => {
                 />
               </svg>
             </button>
-          )
+          );
         }
       })()}
     </div>
-  )
-}
+  );
+};
 
 export default Form;

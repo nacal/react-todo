@@ -15,9 +15,9 @@ type Filter = 'all' | 'checked' | 'unchecked' | 'removed';
 export type { Filter, Todo };
 
 
-const App = () => {
+const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [filter, setFilter] = useState<Filter>('all');
+  const [filter, setFilter] = useState<Filter>("all");
 
   return (
     <>
